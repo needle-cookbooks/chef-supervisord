@@ -1,4 +1,28 @@
-[program:<%= @program['id'] %>]
-<% @program.each do |k,v| %>
-<%= "#{k}=#{v}" unless k=="id" %>
+[program:<%= @program.name %>]
+command=<%= @program.command %>
+autostart=<%= @program.autostart %>
+autorestart=<%= @program.autorestart %>
+<% if @program.directory -%>
+directory=<%= @program.directory %>
+<% end -%>
+<% if @program.user -%>
+user=<%= @program.user %>
+<% end -%>
+<% if @program.stdout_logfile -%>
+stdout_logfile=<%= @program.stdout_logfile %>
+<% end -%>
+<% if @program.stderr_logfile -%>
+stderr_logfile=<%= @program.stderr_logfile %>
+<% end -%>
+<% if @program.startsecs -%>
+startsecs=<%= @program.startsecs -%>
+<% end %>
+<% if @program.stopwaitsecs -%>
+stopwaitsecs=<%= @program.stopwaitsecs %>
+<% end -%>
+<% if @program.priority -%>
+priority=<%= @program.priority %>
+<% end -%>
+<% if @program.numprocs -%>
+numprocs=<%= @program.numprocs %>
 <% end -%>
