@@ -6,3 +6,8 @@ attribute :directory, :kind_of => String
 attribute :autostart, :kind_of => [TrueClass,FalseClass], :default => true
 attribute :autorestart, :kind_of => [String,TrueClass,FalseClass], :default => "unexpected"
 attribute :user, :kind_of => String
+attribute :stdout_logfile, :kind_of => String
+attribute :stderr_logfile, :kind_of => String
+attribute :startsecs => [FixedNum,String]
+attribute :stopwaitsecs => [FixedNum,String]
+attribute :priority => [FixedNum,String]
