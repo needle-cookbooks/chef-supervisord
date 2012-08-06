@@ -10,6 +10,6 @@ attribute :template, :kind_of => String, :default => "supervised-program.conf.er
 attribute :cookbook, :kind_of => String, :default => "supervisord"
 attribute :stdout_logfile, :kind_of => String
 attribute :stderr_logfile, :kind_of => String
-attribute :startsecs => [FixedNum,String]
-attribute :stopwaitsecs => [FixedNum,String]
-attribute :priority => [FixedNum,String]
+attribute :startsecs => [Fixnum,String]
+attribute :stopwaitsecs => [Fixnum,String]
+attribute :priority => [Fixnum,String]
