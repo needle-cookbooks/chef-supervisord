@@ -13,3 +13,4 @@ attribute :stderr_logfile, :kind_of => String
 attribute :startsecs, :kind_of => [Fixnum,String]
 attribute :stopwaitsecs, :kind_of => [Fixnum,String]
 attribute :priority, :kind_of => [Fixnum,String]
+attribute :numprocs, :kind_of => [Fixnum,String]
