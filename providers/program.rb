@@ -1,7 +1,7 @@
 action :supervise do
   template "#{node['supervisord']['conf_dir']}/conf.d/#{new_resource.name}.conf" do
-    source "supervised-program.conf.erb"
-    cookbook "supervisord"
+    source new_resource.template
+    cookbook new_resource.cookbook
     owner "root"
     group "root"
     mode "0644"
