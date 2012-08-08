@@ -7,6 +7,10 @@
 #
 
 # Additional options that are passed to the Daemon.
+<% if node[:supervisord][:daemon_opts] -%>
 DAEMON_OPTS="<%= node[:supervisord][:daemon_opts] %>"
+<% else -%>
+DAEMON_OPTS=""
+<% end -%>
 # Seconds to sleep between stop and start when restarting
 <% if node[:supervisor][:restart_sleep_time] -%>DODTIME=<%= node[:supervisor][:restart_sleep_time] %><% end -%>
