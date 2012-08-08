@@ -44,8 +44,26 @@ template "#{node["supervisord"]["conf_dir"]}/supervisord.conf" do
   )
 end
 
+if node[:platform] == 'ubuntu'
+  template "/etc/default/supervisor" do
+    source "ubuntu-supervisor-defaults.sh.erb"
+    owner "root"
+    group "root"
+    mode "0644"
+  end
+
+  # replace default init script with our own
+  # the default ubuntu one doesn't restart properly
+  cookbook_file "/etc/init.d/supervisor" do
+    source "ubuntu-supervisor-init.sh"
+    owner "root"
+    group "root"
+    mode "0755"
+  end
+end
+
 service "supervisor" do
-  supports :status => true, :restart => false, :reload => true
+  supports :status => true, :restart => true, :reload => true
   reload_command "supervisorctl update"
   action [:enable, :start]
 end
