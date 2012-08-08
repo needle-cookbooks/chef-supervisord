@@ -1,0 +1,12 @@
+# Defaults for supervisor initscript
+# sourced by /etc/init.d/supervisor
+# installed at /etc/default/supervisor by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# Additional options that are passed to the Daemon.
+DAEMON_OPTS="<%= node[:supervisord][:daemon_opts] %>"
+# Seconds to sleep between stop and start when restarting
+<% if node[:supervisor][:restart_sleep_time] -%>DODTIME=<%= node[:supervisor][:restart_sleep_time] %><% end -%>

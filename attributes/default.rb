@@ -40,3 +40,7 @@ set[:supervisord][:supervisorctl][:username] = nil
 set[:supervisord][:supervisorctl][:password] = nil
 set[:supervisord][:supervisorctl][:prompt] = nil
 set[:supervisord][:supervisorctl][:history_file] = nil
+
+# additional parameters for /etc/defaults/supervisor (ubuntu only)
+set[:supervisord][:daemon_opts] = nil
+set[:supervisord][:restart_sleep_time] = nil
