@@ -1,2 +1,2 @@
 #!/bin/bash
-exec env supervisord -n -c <%=::File.join(node['supervisord']['conf_dir'] %>,'supervisord.conf')%> <%=node['supervisord']['daemon_opts']%>
+exec env supervisord -n -c <%=::File.join(node['supervisord']['conf_dir'],'supervisord.conf')%> <%=node['supervisord']['daemon_opts']%>
