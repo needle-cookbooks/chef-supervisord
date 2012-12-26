@@ -1,0 +1,2 @@
+#!/bin/bash
+exec env supervisord -c <%= node['supervisord']['conf_dir'] %> <%= node['supervisord']['daemon_opts'] %>

@@ -9,3 +9,4 @@ recipe           "supervisord::default", "Installs/Configures supervisord"
 recipe           "supervisord::includes", "Installs/Configures additional programs" 
 
 depends          'python'
+depends          'runit'

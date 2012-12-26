@@ -19,6 +19,7 @@
 
 if node['supervisord']['install_from_pip']
   include_recipe 'python'
+  include_recipe 'runit'
 
   package 'supervisor' do
     action :remove
@@ -28,6 +29,9 @@ if node['supervisord']['install_from_pip']
     version node['supervisord']['version']
     action :install
   end
+
+  runit_service 'supervisord'
+
 else
   package 'supervisor' do
     action :install
