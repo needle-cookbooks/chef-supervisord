@@ -30,7 +30,9 @@ if node['supervisord']['install_from_pip']
     action :install
   end
 
-  runit_service 'supervisord'
+  runit_service 'supervisor' do
+    action :nothing
+  end
 
 else
   package 'supervisor' do
@@ -61,7 +63,7 @@ template "#{node["supervisord"]["conf_dir"]}/supervisord.conf" do
   )
 end
 
-if node[:platform] == 'ubuntu'
+if node[:platform] == 'ubuntu' and node['supervisord']['install_from_pip'] == false
   template "/etc/default/supervisor" do
     source "ubuntu-supervisor-defaults.sh.erb"
     owner "root"
@@ -77,6 +79,10 @@ if node[:platform] == 'ubuntu'
     group "root"
     mode "0755"
   end
+end
+
+link '/etc/supervisord.conf' do
+  to ::File.join(node['supervisord']['conf_dir'],'supervisord.conf')
 end
 
 service "supervisor" do
