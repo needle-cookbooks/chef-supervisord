@@ -4,6 +4,10 @@
 set[:supervisord][:data_bag_items] = []
 set[:supervisord][:conf_dir] = '/etc/supervisor'
 
+# install from pip?
+default[:supervisord][:install_from_pip] = true
+default[:supervisord][:version] = '3.0.12'
+
 # global supervisord settings
 set[:supervisord][:globals][:logfile] = '/var/log/supervisor/supervisord.log'
 set[:supervisord][:globals][:pidfile] = '/var/run/supervisord.pid'
