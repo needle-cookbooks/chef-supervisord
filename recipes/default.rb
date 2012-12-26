@@ -63,6 +63,8 @@ template "#{node["supervisord"]["conf_dir"]}/supervisord.conf" do
   )
 end
 
+service_actions = [:start]
+
 if node[:platform] == 'ubuntu' and node['supervisord']['install_from_pip'] == false
   template "/etc/default/supervisor" do
     source "ubuntu-supervisor-defaults.sh.erb"
@@ -79,6 +81,8 @@ if node[:platform] == 'ubuntu' and node['supervisord']['install_from_pip'] == fa
     group "root"
     mode "0755"
   end
+
+  service_actions << :enable
 end
 
 link '/etc/supervisord.conf' do
@@ -88,7 +92,7 @@ end
 service "supervisor" do
   supports :status => true, :restart => true, :reload => true
   reload_command "supervisorctl update"
-  action [:enable, :start]
+  action service_actions
 end
 
 # TODO: starting/restarting the supervisor service may fail if there's an existing:
