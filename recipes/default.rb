@@ -24,7 +24,7 @@ if node['supervisord']['install_from_pip']
     action :remove
   end
 
-  python_pip 'supervisord' do
+  python_pip 'supervisor' do
     version node['supervisord']['version']
     action :install
   end
